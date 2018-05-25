@@ -18,15 +18,19 @@ ActiveRecord::Schema.define(version: 2018_05_25_013012) do
   create_table "departments", force: :cascade do |t|
     t.string "name"
     t.string "category"
+    t.bigint "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["store_id"], name: "index_departments_on_store_id"
   end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.float "price"
+    t.bigint "department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_items_on_department_id"
   end
 
   create_table "stores", force: :cascade do |t|
